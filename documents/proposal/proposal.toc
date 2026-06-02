@@ -1,0 +1,38 @@
+\contentsline {section}{\textit {Abstract}}{i}{Doc-Start}%
+\contentsline {section}{\textit {Table of Contents}}{ii}{Doc-Start}%
+\contentsline {section}{\textit {List of Figures}}{iv}{Doc-Start}%
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Background}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Problem Statement}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Objectives}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Motivation and Significance}{3}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Related Work}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Citation Networks as Scholarly Knowledge Graphs}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Community Detection in Static and Dynamic Networks}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Semantic Representation of Scientific Text }{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Deep Graph Neural Networks and Oversmoothing }{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Bibliometric Indicators of Impact and Delayed Recognition}{6}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Design and Implementation}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Data Collection}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Graph Construction}{8}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Citation Graph}{8}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Paper-Author Graphs}{8}{subsubsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.3}Community Detection}{9}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Topic Extraction}{9}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Embeddings}{9}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Semantic Embeddings of Papers}{9}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Embeddings of Authors}{9}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}Graph-Based Embeddings}{9}{subsubsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.6}The Ranking of Communities}{10}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Training Loop}{10}{subsubsection.3.6.1}%
+\contentsline {section}{\numberline {4}System Requirement Specification}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Software Specifications}{11}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Front-End Techologies}{11}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Back-End Techologies}{11}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Database Systems}{11}{subsubsection.4.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.4}Machine Learning and AI Frameworks}{11}{subsubsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.2}Hardware Specifications}{11}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Minimum Hardware Requirements}{11}{subsubsection.4.2.1}%
+\contentsline {section}{\numberline {5}Project Planning and Scheduling}{12}{section.5}%
+\contentsline {section}{\numberline {6}Expected Outcome}{13}{section.6}%
+\contentsline {section}{\textit {References}}{14}{section.6}%

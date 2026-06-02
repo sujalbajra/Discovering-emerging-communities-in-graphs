@@ -1,0 +1,15 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'proposal.blg'
+[77] biber:340> INFO - === Wed Apr 22, 2026, 15:20:29
+[94] Biber.pm:419> INFO - Reading 'proposal.bcf'
+[143] Biber.pm:979> INFO - Found 34 citekeys in bib section 0
+[155] Biber.pm:4419> INFO - Processing section 0
+[167] Biber.pm:4610> INFO - Looking for bibtex file 'refs.bib' for section 0
+[172] bibtex.pm:1713> INFO - LaTeX decoding ...
+[227] bibtex.pm:1519> INFO - Found BibTeX data source 'refs.bib'
+[465] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[466] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[466] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[466] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[489] bbl.pm:660> INFO - Writing 'proposal.bbl' with encoding 'UTF-8'
+[504] bbl.pm:763> INFO - Output to proposal.bbl

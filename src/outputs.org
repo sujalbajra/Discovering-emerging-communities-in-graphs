@@ -1,0 +1,350 @@
+#+title: Outputs of EDA
+
+* File Sizes
+7.3MB  ../data/openalex_mesh/descriptor_data.parquet
+311MB  ../data/openalex_mesh/prime_location_data.parquet
+335MB  ../data/openalex_mesh/citation_counts_data.parquet
+345MB  ../data/openalex_mesh/topic_data.parquet
+1006MB ../data/openalex_mesh/authors_data.parquet
+1.6GB  ../data/openalex_mesh/mesh_data.parquet
+2.1GB  ../data/openalex_mesh/related_data.parquet
+3.6GB  ../data/openalex_mesh/keyword_data.parquet
+4.8GB  ../data/openalex_mesh/cited_data.parquet
+7.5GB  ../data/openalex_mesh/work.parquet
+
+* Schema
+==================================================
+FILE: work.parquet
+Shape: 32,685,742 rows x 18 cols
+──────────────────────────────────────────────────
+  paper_id                            String
+  paper_title                         String
+  publication_date                    Date
+  type                                String
+  authors_count                       Int64
+  language                            String
+  locations_count                     Int64
+  countries_distinct_count            Int64
+  institutions_distinct_count         Int64
+  referenced_works_count              Int64
+  cited_by_count                      Int64
+  fwci_val                            Float32
+  updated_date                        Date
+  is_oa                               Boolean
+  oa_status                           String
+  percentile_rank                     Float32
+  cited_by_percentile_year_avg        Float32
+  abstract                            String
+
+==================================================
+FILE: cited_data.parquet
+Shape: 863,832,854 rows x 2 cols
+──────────────────────────────────────────────────
+  paper_id                            String
+  cited_id                            String
+
+==================================================
+FILE: keyword_data.parquet
+Shape: 353,155,700 rows x 3 cols
+──────────────────────────────────────────────────
+  paper_id                            String
+  keyword_id                          String
+  score                               Float64
+
+==================================================
+FILE: related_data.parquet
+Shape: 325,826,457 rows x 2 cols
+──────────────────────────────────────────────────
+  paper_id                            String
+  related_id                          String
+
+==================================================
+FILE: mesh_data.parquet
+Shape: 32,660,043 rows x 3 cols
+──────────────────────────────────────────────────
+  paper_id                            String
+  descriptor_ids                      List(String)
+  is_major_topics                     List(Boolean)
+
+==================================================
+FILE: authors_data.parquet
+Shape: 147,848,907 rows x 2 cols
+──────────────────────────────────────────────────
+  paper_id                            String
+  author_id                           String
+
+==================================================
+FILE: topic_data.parquet
+Shape: 86,757,659 rows x 2 cols
+──────────────────────────────────────────────────
+  paper_id                            String
+  topic_id                            String
+
+==================================================
+FILE: citation_counts_data.parquet
+Shape: 150,401,551 rows x 3 cols
+──────────────────────────────────────────────────
+  paper_id                            String
+  citation_year                       Int64
+  yearly_citations                    Int64
+
+==================================================
+FILE: prime_location_data.parquet
+Shape: 32,626,333 rows x 5 cols
+──────────────────────────────────────────────────
+  paper_id                            String
+  source_id                           String
+  source_name                         String
+  host_org_id                         String
+  host_org_name                       String
+
+==================================================
+FILE: descriptor_data.parquet
+Shape: 496,553 rows x 2 cols
+──────────────────────────────────────────────────
+  descriptor_id                       String
+  descriptor                          String
+
+
+* TODO Duplicates
+mesh rows:                31,787,247
+work rows:                31,787,247
+in mesh, missing work:             0
+in work, missing mesh:             0
+overlap:                  31,787,247
+mesh    total=  32,660,043  unique=  31,787,247  dupes=     872,796
+work    total=  32,685,742  unique=  31,787,247  dupes=     898,495
+
+[[../plots/work_dupes_plot.png]]
+[[../plots/mesh_dupes_plot.png]]
+
+** Sample Duplicates
+Looking at 5 sample duplicates in both mesh and work I came to the following conclusion in work the only change is the update date.
+For mesh it looks like descriptor_ids is a different permutation.
+
+** Final mesh and work files
+mesh    total=  31,787,247  unique=  31,787,247  dupes=           0
+work    total=  31,787,247  unique=  31,787,247  dupes=           0
+
+* Timestamps
+** Date Range
+Min: 1400-01-01
+Max: 2026-12-31
+*** Early Access Papers
+Data downloaded around: 2026-04-02
+We have 32 early access papers who have publication_date after our download date.
+
+** Null count
+Nulls: 41
+
+** Unique year timestamps(excluding Null)
+196
+
+** Unique year-month timestamps
+1,760
+
+** Unique timestamps
+30,720
+
+** Yearly paper counts
+[[../plots/medical_papers_per_year_from_1940.png]]
+*** Table
+| year | count   |
+|------+---------|
+| NULL |      41 |
+| 1400 |       1 |
+| 1812 |       1 |
+| 1825 |       1 |
+| 1827 |       1 |
+| 1828 |       2 |
+| 1829 |       2 |
+| 1830 |       4 |
+| 1831 |       1 |
+| 1832 |       2 |
+| 1833 |       1 |
+| 1837 |       1 |
+| 1838 |       2 |
+| 1839 |       1 |
+| 1840 |       6 |
+| 1841 |       1 |
+| 1842 |       2 |
+| 1843 |       6 |
+| 1844 |       2 |
+| 1845 |       1 |
+| 1846 |       5 |
+| 1847 |       3 |
+| 1848 |       2 |
+| 1850 |       8 |
+| 1851 |       1 |
+| 1853 |       2 |
+| 1854 |       5 |
+| 1855 |       1 |
+| 1856 |       1 |
+| 1857 |       2 |
+| 1858 |       3 |
+| 1859 |       4 |
+| 1860 |       1 |
+| 1861 |       1 |
+| 1862 |       2 |
+| 1863 |       4 |
+| 1864 |       3 |
+| 1865 |       3 |
+| 1866 |       3 |
+| 1868 |       1 |
+| 1869 |       5 |
+| 1870 |       6 |
+| 1871 |       3 |
+| 1872 |       3 |
+| 1873 |       5 |
+| 1874 |       1 |
+| 1875 |       4 |
+| 1876 |       4 |
+| 1878 |       7 |
+| 1879 |       2 |
+| 1880 |      10 |
+| 1881 |       1 |
+| 1882 |       6 |
+| 1883 |       2 |
+| 1884 |       3 |
+| 1885 |      11 |
+| 1886 |       6 |
+| 1887 |       7 |
+| 1888 |      15 |
+| 1889 |      13 |
+| 1890 |      25 |
+| 1891 |      19 |
+| 1892 |      19 |
+| 1893 |      18 |
+| 1894 |      22 |
+| 1895 |      18 |
+| 1896 |      25 |
+| 1897 |      33 |
+| 1898 |      29 |
+| 1899 |      32 |
+| 1900 |      46 |
+| 1901 |      29 |
+| 1902 |      31 |
+| 1903 |      25 |
+| 1904 |      34 |
+| 1905 |      46 |
+| 1906 |      27 |
+| 1907 |      55 |
+| 1908 |      21 |
+| 1909 |      28 |
+| 1910 |      25 |
+| 1911 |      28 |
+| 1912 |      36 |
+| 1913 |      36 |
+| 1914 |      36 |
+| 1915 |      28 |
+| 1916 |      36 |
+| 1917 |      35 |
+| 1918 |      46 |
+| 1919 |      56 |
+| 1920 |      68 |
+| 1921 |      78 |
+| 1922 |     103 |
+| 1923 |      71 |
+| 1924 |      80 |
+| 1925 |      60 |
+| 1926 |     107 |
+| 1927 |     102 |
+| 1928 |     107 |
+| 1929 |      94 |
+| 1930 |      96 |
+| 1931 |      92 |
+| 1932 |     102 |
+| 1933 |     100 |
+| 1934 |     139 |
+| 1935 |     138 |
+| 1936 |     144 |
+| 1937 |     127 |
+| 1938 |     151 |
+| 1939 |     168 |
+| 1940 |     143 |
+| 1941 |     150 |
+| 1942 |     190 |
+| 1943 |     177 |
+| 1944 |     268 |
+| 1945 |   14227 |
+| 1946 |   44498 |
+| 1947 |   57033 |
+| 1948 |   62623 |
+| 1949 |   55898 |
+| 1950 |   74826 |
+| 1951 |   91575 |
+| 1952 |   95793 |
+| 1953 |   97117 |
+| 1954 |   93355 |
+| 1955 |   95233 |
+| 1956 |   93224 |
+| 1957 |   97991 |
+| 1958 |   97792 |
+| 1959 |   97860 |
+| 1960 |   98431 |
+| 1961 |  105677 |
+| 1962 |  110647 |
+| 1963 |  124253 |
+| 1964 |  142429 |
+| 1965 |  157412 |
+| 1966 |  172728 |
+| 1967 |  181899 |
+| 1968 |  202816 |
+| 1969 |  213959 |
+| 1970 |  217192 |
+| 1971 |  218206 |
+| 1972 |  223556 |
+| 1973 |  224562 |
+| 1974 |  229907 |
+| 1975 |  229266 |
+| 1976 |  229828 |
+| 1977 |  203320 |
+| 1978 |  208716 |
+| 1979 |  247221 |
+| 1980 |  273369 |
+| 1981 |  277520 |
+| 1982 |  286982 |
+| 1983 |  301595 |
+| 1984 |  309462 |
+| 1985 |  320602 |
+| 1986 |  333053 |
+| 1987 |  347534 |
+| 1988 |  359273 |
+| 1989 |  378457 |
+| 1990 |  383318 |
+| 1991 |  384856 |
+| 1992 |  388296 |
+| 1993 |  391573 |
+| 1994 |  399961 |
+| 1995 |  410165 |
+| 1996 |  443092 |
+| 1997 |  427624 |
+| 1998 |  483423 |
+| 1999 |  452118 |
+| 2000 |  500371 |
+| 2001 |  495339 |
+| 2002 |  536480 |
+| 2003 |  608643 |
+| 2004 |  611879 |
+| 2005 |  617809 |
+| 2006 |  646806 |
+| 2007 |  662739 |
+| 2008 |  711264 |
+| 2009 |  731774 |
+| 2010 |  756051 |
+| 2011 |  783652 |
+| 2012 |  806570 |
+| 2013 |  856158 |
+| 2014 |  875617 |
+| 2015 |  888129 |
+| 2016 |  860307 |
+| 2017 |  848769 |
+| 2018 |  861502 |
+| 2019 |  902988 |
+| 2020 | 1021969 |
+| 2021 | 1021105 |
+| 2022 |  998672 |
+| 2023 |  914393 |
+| 2024 |  954539 |
+| 2025 |  883047 |
+| 2026 |   61580 |
