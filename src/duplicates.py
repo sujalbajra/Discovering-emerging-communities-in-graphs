@@ -110,8 +110,8 @@ def count_duplicates():
     import polars as pl
 
     for name, path in [
-        ("mesh", "../data/mesh_processed/mesh_deduped.parquet"),
-        ("work", "../data/mesh_processed/work_deduped.parquet"),
+        ("mesh", "../data/openalex_mesh/mesh_data.parquet"),
+        ("work", "../data/openalex_mesh/work.parquet"),
     ]:
         df = pl.scan_parquet(path).select("paper_id")
         total = df.select(pl.len()).collect().item()

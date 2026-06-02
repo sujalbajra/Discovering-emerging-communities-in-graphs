@@ -106,8 +106,7 @@ Shape: 496,553 rows x 2 cols
   descriptor_id                       String
   descriptor                          String
 
-
-* TODO Duplicates
+* Duplicates
 mesh rows:                31,787,247
 work rows:                31,787,247
 in mesh, missing work:             0
@@ -349,3 +348,25 @@ Nulls: 41
 | 2024 |  954539 |
 | 2025 |  883047 |
 | 2026 |   61580 |
+* Mesh Tags
+Unique tags with >= 1 paper : 496,553
+Tags with > 1 paper: 437,928
+Mean papers/tag             : 773.5
+Median papers/tag           : 24.0
+Max                         : 22,375,134
+Min                         : 1
+
+Bucket distribution:
+bucket
+1-9        182313
+10-99      161155
+100-999    110787
+1k-9k       37422
+10k-99k      4655
+100k+         219
+
+Major-topic assignments (%):
+   major_topic_pct
+0            12.68
+
+Rare tags (< 10 papers): 182,313
