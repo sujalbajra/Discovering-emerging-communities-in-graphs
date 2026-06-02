@@ -1,6 +1,7 @@
 #+title: Outputs of EDA
 
 * File Sizes
+du -sh ../data/*.parquet | sort -h
 7.3MB  ../data/openalex_mesh/descriptor_data.parquet
 311MB  ../data/openalex_mesh/prime_location_data.parquet
 335MB  ../data/openalex_mesh/citation_counts_data.parquet
