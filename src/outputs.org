@@ -1,19 +1,20 @@
 #+title: Outputs of EDA
 
-* File Sizes
-du -sh ../data/*.parquet | sort -h
-7.3MB  ../data/openalex_mesh/descriptor_data.parquet
-311MB  ../data/openalex_mesh/prime_location_data.parquet
-335MB  ../data/openalex_mesh/citation_counts_data.parquet
-345MB  ../data/openalex_mesh/topic_data.parquet
-1006MB ../data/openalex_mesh/authors_data.parquet
-1.6GB  ../data/openalex_mesh/mesh_data.parquet
-2.1GB  ../data/openalex_mesh/related_data.parquet
-3.6GB  ../data/openalex_mesh/keyword_data.parquet
-4.8GB  ../data/openalex_mesh/cited_data.parquet
-7.5GB  ../data/openalex_mesh/work.parquet
+* Basic Data Inventory
+** File Sizes(updated)
+du -sh *.parquet | sort -h
+7.3M    descriptor_data.parquet
+311M    prime_location_data.parquet
+335M    citation_counts_data.parquet
+345M    topic_data.parquet
+1006M   authors_data.parquet
+1.6G    mesh_data.parquet
+2.1G    related_data.parquet
+3.6G    edge_list.parquet
+3.6G    keyword_data.parquet
+7.3G    work.parquet
 
-* Schema
+** Schema
 ==================================================
 FILE: work.parquet
 Shape: 32,685,742 rows x 18 cols
@@ -106,7 +107,7 @@ Shape: 496,553 rows x 2 cols
   descriptor_id                       String
   descriptor                          String
 
-* Duplicates
+** Duplicates
 mesh rows:                31,787,247
 work rows:                31,787,247
 in mesh, missing work:             0
@@ -118,37 +119,37 @@ work    total=  32,685,742  unique=  31,787,247  dupes=     898,495
 [[../plots/work_dupes_plot.png]]
 [[../plots/mesh_dupes_plot.png]]
 
-** Sample Duplicates
+*** Sample Duplicates
 Looking at 5 sample duplicates in both mesh and work I came to the following conclusion in work the only change is the update date.
 For mesh it looks like descriptor_ids is a different permutation.
 
-** Final mesh and work files
+*** Final mesh and work files
 mesh    total=  31,787,247  unique=  31,787,247  dupes=           0
 work    total=  31,787,247  unique=  31,787,247  dupes=           0
 
-* Timestamps
-** Date Range
+** Timestamps
+*** Date Range
 Min: 1400-01-01
 Max: 2026-12-31
-*** Early Access Papers
+**** Early Access Papers
 Data downloaded around: 2026-04-02
 We have 32 early access papers who have publication_date after our download date.
 
-** Null count
+*** Null count
 Nulls: 41
 
-** Unique year timestamps(excluding Null)
+*** Unique year timestamps(excluding Null)
 196
 
-** Unique year-month timestamps
+*** Unique year-month timestamps
 1,760
 
-** Unique timestamps
+*** Unique timestamps
 30,720
 
-** Yearly paper counts
+*** Yearly paper counts
 [[../plots/medical_papers_per_year_from_1940.png]]
-*** Table
+**** Table
 | year | count   |
 |------+---------|
 | NULL |      41 |
@@ -348,7 +349,7 @@ Nulls: 41
 | 2024 |  954539 |
 | 2025 |  883047 |
 | 2026 |   61580 |
-* Mesh Tags
+** Mesh Tags
 Unique tags with >= 1 paper : 496,553
 Tags with > 1 paper: 437,928
 Mean papers/tag             : 773.5
@@ -370,3 +371,58 @@ Major-topic assignments (%):
 0            12.68
 
 Rare tags (< 10 papers): 182,313
+
+** Edge retention rate
+Total edges: 863,832,854
+Within-dataset edges:  648,067,949  (75.0%)
+Outside-dataset edges: 215,764,905  (25.0%)
+
+** NULL publication date paper analysis
+Max in-degree among null papers:  2
+Max out-degree among null papers: 0
+Papers with in_degree > 100:      0
+Papers with zero edges:           33
+*** Table
+| paper_id    | out_degree | in_degree |
+|-------------+------------+-----------|
+| W3154067219 |          0 |         2 |
+| W3116344660 |          0 |         2 |
+| W3111759974 |          0 |         2 |
+| W3110789117 |          0 |         2 |
+| W4412726211 |          0 |         1 |
+| W3154398445 |          0 |         1 |
+| W3110692075 |          0 |         1 |
+| W4292764139 |          0 |         1 |
+| W4403703578 |          0 |         0 |
+| W3110812753 |          0 |         0 |
+| W4403703564 |          0 |         0 |
+| W4403703496 |          0 |         0 |
+| W4403703609 |          0 |         0 |
+| W4292763483 |          0 |         0 |
+| W4403703624 |          0 |         0 |
+| W3154257347 |          0 |         0 |
+| W4403703526 |          0 |         0 |
+| W3110699992 |          0 |         0 |
+| W4403703556 |          0 |         0 |
+| W4403703558 |          0 |         0 |
+| W4403703649 |          0 |         0 |
+| W7105728853 |          0 |         0 |
+| W4416239420 |          0 |         0 |
+| W4416239506 |          0 |         0 |
+| W4416239509 |          0 |         0 |
+| W4416239764 |          0 |         0 |
+| W4417321112 |          0 |         0 |
+| W4417321142 |          0 |         0 |
+| W4417321261 |          0 |         0 |
+| W4417321292 |          0 |         0 |
+| W4417321620 |          0 |         0 |
+| W4417321253 |          0 |         0 |
+| W4417321345 |          0 |         0 |
+| W3153263151 |          0 |         0 |
+| W3111177954 |          0 |         0 |
+| W4403703481 |          0 |         0 |
+| W4412728039 |          0 |         0 |
+| W4403703612 |          0 |         0 |
+| W4411535967 |          0 |         0 |
+| W4403703579 |          0 |         0 |
+| W2408918457 |          0 |         0 |
